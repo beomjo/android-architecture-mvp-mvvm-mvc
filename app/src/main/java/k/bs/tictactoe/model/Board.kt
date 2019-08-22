@@ -16,9 +16,6 @@ class Board {
         restart()
     }
 
-    /**
-     * Restart or start a new game, will clear the board and win status
-     */
     fun restart() {
         clearCells()
         winner = null
@@ -26,15 +23,6 @@ class Board {
         state = GameState.IN_PROGRESS
     }
 
-    /**
-     * Mark the current row for the player who's current turn it is.
-     * Will perform no-op if the arguments are out of range or if that position is already played.
-     * Will also perform a no-op if the game is already over.
-     *
-     * @param row 0..2
-     * @param col 0..2
-     * @return the player that moved or null if we did not move anything.
-     */
     fun mark(row: Int, col: Int): Player? {
 
         var playerThatMoved: Player? = null
@@ -66,11 +54,11 @@ class Board {
     }
 
     private fun isValid(row: Int, col: Int): Boolean {
-        return if (state == GameState.FINISHED) {
-            false
-        } else if (isOutOfBounds(row) || isOutOfBounds(col)) {
-            false
-        } else !isCellValueAlreadySet(row, col)
+        return when {
+            state == GameState.FINISHED -> false
+            isOutOfBounds(row) || isOutOfBounds(col) -> false
+            else -> !isCellValueAlreadySet(row, col)
+        }
     }
 
     private fun isOutOfBounds(idx: Int): Boolean {
@@ -82,14 +70,6 @@ class Board {
     }
 
 
-    /**
-     * Algorithm adapted from http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html
-     * @param player
-     * @param currentRow
-     * @param currentCol
-     * @return true if `player` who just played the move at the `currentRow`, `currentCol`
-     * has a tic tac toe.
-     */
     private fun isWinningMoveByPlayer(player: Player?, currentRow: Int, currentCol: Int): Boolean {
 
         return ((cells[currentRow][0].value == player         // 3-in-the-row
