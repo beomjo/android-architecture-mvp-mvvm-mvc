@@ -35,4 +35,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //koin
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-core:$koin_version"// Koin for Kotlin
+    implementation "org.koin:koin-core-ext:$koin_version"// Koin extended & experimental features
+    testImplementation "org.koin:koin-test:$koin_version"// Koin for Unit tests
+    implementation "org.koin:koin-android:$koin_version"// Koin for Android
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"// Koin AndroidX ViewModel feature
 }
