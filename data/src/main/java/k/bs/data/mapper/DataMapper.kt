@@ -1,4 +1,4 @@
-package k.example.data.mapper
+package k.bs.data.mapper
 
 interface DataMapper<E, D> {
     fun mapFromEntity(type: E): D
