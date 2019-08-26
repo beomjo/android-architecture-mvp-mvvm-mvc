@@ -9,7 +9,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.presentation"
+        applicationId "k.bs.tictactoe"
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
@@ -38,4 +38,5 @@ dependencies {
 
     implementation project(':data')
     implementation project(':domain')
+    implementation project(':app')
 }
